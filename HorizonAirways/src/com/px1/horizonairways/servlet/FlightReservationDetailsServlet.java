@@ -36,12 +36,7 @@ public class FlightReservationDetailsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-		if(request.getParameter("logout")!=null) {
-			request.getSession().invalidate();
-			response.sendRedirect(".index.jsp");
-		}
-		
+	
 		HttpSession session = request.getSession();
 		FlightReservationService service = new FlightReservationService();
 		ReservationDA da = new ReservationDA();

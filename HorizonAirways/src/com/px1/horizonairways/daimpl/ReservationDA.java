@@ -310,9 +310,9 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 		BigDecimal businessClassFare = rs.getBigDecimal(8).setScale(2,BigDecimal.ROUND_HALF_UP);
 		BigDecimal economyClassFare = rs.getBigDecimal(9).setScale(2,BigDecimal.ROUND_HALF_UP);
 		
-		flightFareMap.put("First Class - $" + firstClassFare, firstClassFare);
-		flightFareMap.put("Business Class - $" + businessClassFare, businessClassFare);
-		flightFareMap.put("Economy Class - $" + economyClassFare, economyClassFare);
+		flightFareMap.put("First", firstClassFare);
+		flightFareMap.put("Business", businessClassFare);
+		flightFareMap.put("Economy", economyClassFare);
 		
 	}
 			
@@ -495,7 +495,7 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 			}
 			
 		}
-		System.out.println(rows);
+		
 		return rows;
 		
 	}

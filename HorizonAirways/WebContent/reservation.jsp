@@ -26,7 +26,7 @@
 					<c:if test="${ not empty sessionScope.user}">
 					
 						<div>
-							<form>
+							<form action="./logout" method="get">
 								<input type="submit" name="logout" value="Log out" align="right"/>
 							</form>
 						</div>

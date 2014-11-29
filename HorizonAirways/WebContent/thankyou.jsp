@@ -5,20 +5,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link rel="stylesheet" href="css/thankyou.css">
+<link rel="stylesheet" href="css/ticket.css">
 <title>Reservation Success!</title>
 </head>
 <body>
 	<c:if test="${ empty sessionScope.user}">
-		<c:redirect url="/index.jsp" />
+		<jsp:forward page="/index.jsp" />
 	</c:if>
 	<div class="header">
-		<div>
+		<div><a href="./index.jsp">
 			<img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px"
-				height="100px" />
+				height="100px" /></a>
 		</div>
 		<div>
-			<form>
+			<form action="./logout" method="get">
 				<input type="submit" name="logout" value="Log out" />
 			</form>
 		</div>
@@ -38,8 +38,8 @@
 		</div>
 		<div>
 			<p id="dateOfIssue">Date of Issue: ${passenger.formattedDate }</p>
-			<p class="ticketDetails">NOT TRANSFERRABLEPassenger Name:
-				${passenger.firstName }&nbsp; ${passenger.lastName }<p><p cl ass="ticketDetails"></p>
+			<p class="ticketDetails">NOT TRANSFERRABLE<br/>Passenger Name:
+				${passenger.firstName }&nbsp; ${passenger.lastName }<p><p class="ticketDetails"></p>
 			
 			
 			<div class="flightDetails">
@@ -106,7 +106,7 @@
 	</div>
 	<div class="footer">
 		<a href="./index.jsp"><b>Back to Home Page</b></a></<div>
-<script src="js/thankyou.js"></script>
+<script src="js/ticket.js"></script>
 
 </body>
 </html>

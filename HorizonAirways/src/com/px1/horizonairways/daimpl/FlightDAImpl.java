@@ -29,7 +29,7 @@ private static final String FIND_LAYOUT_BY_FLIGHTNO = "SELECT Rows,FirstClassArr
 				aircraftLayout.setBusinessClassSeatArrangement(rs.getString(3));
 				aircraftLayout.setEconomyClassSeatArrangement(rs.getString(4));
 			}
-//			System.out.println(aircraftLayout.toString());
+
 			return aircraftLayout;
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

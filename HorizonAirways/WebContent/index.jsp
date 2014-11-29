@@ -39,7 +39,7 @@
 				
 					<c:otherwise>
 						<div>
-							<form>
+							<form action="./logout" method="get">
 								<input type="submit" name="logout" value="Log out"/>
 							</form>
 						</div>

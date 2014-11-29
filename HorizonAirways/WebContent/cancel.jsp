@@ -20,7 +20,7 @@
 	<div class="header">
 		<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
 		<div>
-			<form>
+			<form action="./logout" method="get">
 				<input type="submit" name="logout" value="Log out" />
 			</form>
 		</div>

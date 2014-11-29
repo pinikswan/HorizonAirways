@@ -31,12 +31,7 @@ public class ReservationCompletionServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getParameter("logout")!=null) {
-			request.getSession().invalidate();
-			response.sendRedirect(".index.jsp");
-		}
-		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {	
 		
 		FlightReservationService service = new FlightReservationService();
 		service.setDa(new ReservationDA());
@@ -65,7 +60,7 @@ public class ReservationCompletionServlet extends HttpServlet {
 			request.setAttribute("reservedFlight2",reservedFlight2);
 			
 		}
-		System.out.println(((ReservedFlight)request.getAttribute("reservedFlight1")).getSeatClass());
+	
 
 		request.getRequestDispatcher("./thankyou.jsp").forward(request, response);
 		
