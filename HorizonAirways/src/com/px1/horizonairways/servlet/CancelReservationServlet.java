@@ -27,6 +27,12 @@ public class CancelReservationServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getParameter("logout")!=null) {
+			request.getSession().invalidate();
+			response.sendRedirect(".index.jsp");
+		}
+		
+		
 		FlightReservationService service = new FlightReservationService();
 		ReservationDA da = new ReservationDA();
 		service.setDa(da);

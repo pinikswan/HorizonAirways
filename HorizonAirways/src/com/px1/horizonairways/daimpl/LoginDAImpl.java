@@ -17,7 +17,6 @@ public class LoginDAImpl implements LoginDA {
 
 	}
 
-	@Override
 	public User verifyLogin(Login login) {
 
 		PreparedStatement ps = null;

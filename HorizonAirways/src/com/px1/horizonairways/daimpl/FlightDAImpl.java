@@ -13,7 +13,6 @@ import com.px1.horizonairways.entity.AircraftLayout;
 
 public class FlightDAImpl implements FlightAircraftDA {
 private static final String FIND_LAYOUT_BY_FLIGHTNO = "SELECT Rows,FirstClassArrangement,BusinessClassArrangement,EconomyClassArrangement FROM VwFlightByAircraftModel WHERE FlightNo=?";
-	@Override
 	public AircraftLayout getLayoutByFlightNo(String flightNo) {
 		PreparedStatement stat = null;
 		try {

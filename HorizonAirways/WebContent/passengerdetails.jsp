@@ -32,8 +32,11 @@ $(document).ready(function(){
 
 </head>
 <body>
+	<c:if test="${ empty sessionScope.user}">
+		<c:redirect url="/index.jsp" />
+	</c:if>
 	<div class="header">
-		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
+		<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
 		<div>
 			<form>
 				<input type="submit" name="logout" value="Log out" />

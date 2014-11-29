@@ -32,7 +32,10 @@ public class PassengerDetailsServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		if(request.getParameter("logout")!=null) {
+			request.getSession().invalidate();
+			response.sendRedirect(".index.jsp");
+		}
 		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");

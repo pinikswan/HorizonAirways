@@ -1,5 +1,6 @@
 package com.px1.horizonairways.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Passenger {
@@ -13,6 +14,7 @@ public class Passenger {
 	private String mobileNo;
 	private String emailAddress;
 	private Date reservationDate;
+	private String formattedDate;
 	
 
 	public Passenger() {
@@ -42,7 +44,7 @@ public class Passenger {
 	}
 
 	public String getLastName() {
-		return lastName;
+		return lastName.substring(0,1).toUpperCase() + lastName.substring(1);
 	}
 
 	public void setLastName(String lastName) {
@@ -50,7 +52,7 @@ public class Passenger {
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return firstName.substring(0,1).toUpperCase() + firstName.substring(1);
 	}
 
 	public void setFirstName(String firstName) {
@@ -103,6 +105,14 @@ public class Passenger {
 
 	public void setReservationDate(Date reservationDate) {
 		this.reservationDate = reservationDate;
+	}
+
+	public String getFormattedDate() {
+		return new SimpleDateFormat("MM/dd/yyyy").format(reservationDate);
+	}
+
+	public void setFormattedDate(String formattedDate) {
+		this.formattedDate = formattedDate;
 	}
 
 	

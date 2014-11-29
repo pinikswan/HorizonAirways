@@ -32,7 +32,12 @@ public class ReservationCompletionServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		if(request.getParameter("logout")!=null) {
+			request.getSession().invalidate();
+			response.sendRedirect(".index.jsp");
+		}
+		
+		
 		FlightReservationService service = new FlightReservationService();
 		service.setDa(new ReservationDA());
 		HttpSession session = request.getSession();
@@ -47,18 +52,21 @@ public class ReservationCompletionServlet extends HttpServlet {
 		
 		String pnr = service.getPassengerPNR(passenger);
 		passenger.setPnr(pnr);
-		ReservedFlight reservedFlight = new ReservedFlight(passenger.getPnr(), firstFlight.getFlightNo(), firstFlight.getFlightDate(), firstSeatNo.toUpperCase(), firstSeatClass, mealPreference, SSR);
-		int result = service.saveReservationDetails(reservedFlight);
+		ReservedFlight reservedFlight1 = new ReservedFlight(passenger.getPnr(), firstFlight.getFlightNo(), firstFlight.getFlightDate(), firstSeatNo.toUpperCase(), firstSeatClass, mealPreference, SSR);
+		int result = service.saveReservationDetails(reservedFlight1);
+		request.setAttribute("reservedFlight1", reservedFlight1);
 		
 		if(session.getAttribute("secondFlight")!=null){
 			String secondSeatNo = request.getParameter("secondSeatNo");
 			String secondSeatClass = request.getParameter("secondSeatClass");
 			FlightDetails secondFlight = (FlightDetails) session.getAttribute("secondFlight");
-			 reservedFlight = new ReservedFlight(passenger.getPnr(), secondFlight.getFlightNo(), secondFlight.getFlightDate(), secondSeatNo.toUpperCase(), secondSeatClass, mealPreference, SSR);
-			service.saveReservationDetails(reservedFlight);
+			ReservedFlight reservedFlight2 = new ReservedFlight(passenger.getPnr(), secondFlight.getFlightNo(), secondFlight.getFlightDate(), secondSeatNo.toUpperCase(), secondSeatClass, mealPreference, SSR);
+			service.saveReservationDetails(reservedFlight2);
+			request.setAttribute("reservedFlight2",reservedFlight2);
+			
 		}
-		
-		request.setAttribute("result", result);
+		System.out.println(((ReservedFlight)request.getAttribute("reservedFlight1")).getSeatClass());
+
 		request.getRequestDispatcher("./thankyou.jsp").forward(request, response);
 		
 		
