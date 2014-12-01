@@ -50,10 +50,13 @@ $(document).ready(function(){
 
 </head>
 <body>
+	<c:if test="${ empty sessionScope.user}">
+		<c:redirect url="/index.jsp" />
+	</c:if>
 	<div class="header">
-		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
+		<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
 		<div>
-			<form>
+			<form action="./logout" method="get">
 				<input type="submit" name="logout" value="Log out" />
 			</form>
 		</div>
@@ -64,26 +67,26 @@ $(document).ready(function(){
 		<h3>Personal Details Form</h3>
 		<div>
 			<label for="firstName">First Name: </label>
-			<input type="text"  name="firstName" id="firstName">
+			<input type="text"  name="firstName" id="firstName" required>
 		</div>
 		<div>
 			<label for="lastName">Last Name: </label>
-			<input type="text" name="lastName" id="lastName" >
+			<input type="text" name="lastName" id="lastName" required>
 		</div>
 		<div>
 			<label for="address">Address: </label>
-			<textarea  name="address" id="address"></textarea>
+			<textarea  name="address" id="address" required></textarea>
 		</div>
 		<div>
 			<label for="gender">Gender: </label>
-			<select name="gender">
+			<select name="gender" required>
 				<option value="M">Male</option>
 				<option value="F">Female</option>
 			</select>
 		</div>
 		<div>
 			<label for="birthDay">Birth Day: </label>
-			<input type="date" name="birthDay" id="birthDay">
+			<input type="date" name="birthDay" id="birthDay" required>
 		</div>
 		<div>
 			<label for="mobileNo">Mobile Number: </label>
@@ -95,14 +98,14 @@ $(document).ready(function(){
 		</div>
 		<div>
 			<label for="mealPreference">Meal Preference: </label>
-			<select name="mealPreference" id="mealPreference">
+			<select name="mealPreference" id="mealPreference" required>
 				<option value="Non-Vegetarian">Non-Vegetarian</option>
 				<option value="Vegetarian">Vegetarian</option>
 			</select>
 		</div>
 		<div>
 			<label for="SSR">SSR: </label>
-			<input type="text" name="SSR" id="SSR" >
+			<input type="text" name="SSR" id="SSR" required placeholder="Put NA if not applicable.">
 		</div>
 		
 		<div><h3>Flight: ${firstFlight.flightNo} - ${firstFlight.sectorId}</h3></div>

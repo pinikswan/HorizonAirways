@@ -310,9 +310,9 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 		BigDecimal businessClassFare = rs.getBigDecimal(8).setScale(2,BigDecimal.ROUND_HALF_UP);
 		BigDecimal economyClassFare = rs.getBigDecimal(9).setScale(2,BigDecimal.ROUND_HALF_UP);
 		
-		flightFareMap.put("First Class - $" + firstClassFare, firstClassFare);
-		flightFareMap.put("Business Class - $" + businessClassFare, businessClassFare);
-		flightFareMap.put("Economy Class - $" + economyClassFare, economyClassFare);
+		flightFareMap.put("First", firstClassFare);
+		flightFareMap.put("Business", businessClassFare);
+		flightFareMap.put("Economy", economyClassFare);
 		
 	}
 			
@@ -383,7 +383,6 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 	}
 
 
-	@Override
 	public int savePassenger(Passenger p) {
 
 		int rows = 0;
@@ -415,7 +414,6 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 	}
 
 
-	@Override
 	public String getPassengerPNR(Passenger p) {
 		String pnr;
 		
@@ -446,7 +444,6 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 	}
 
 
-	@Override
 	public int saveFlightReservation(ReservedFlight reservedFlight) {
 		int rows = 0;
 		PreparedStatement ps = null;
@@ -476,7 +473,6 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 	}
 
 
-	@Override
 	public int cancelPassengerReservation(String pnr) {
 
 		int rows = 0;
@@ -499,13 +495,12 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 			}
 			
 		}
-		System.out.println(rows);
+		
 		return rows;
 		
 	}
 
 
-	@Override
 	public Passenger getPassengerDetailsByPNR(String pnr) {
 
 		Passenger passenger = null;
@@ -548,7 +543,6 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 
 
 
-	@Override
 	public List<String> getAllOccupiedSeatsByFlight(FlightId flightId) {
 
 		
@@ -583,7 +577,6 @@ private static final String GET_ALL_OCCUPIED_SEATS_BY_FLIGHTID = "SELECT SeatNo 
 	}
 
 
-	@Override
 	public List<Passenger> getAllPassengersByFlight(FlightId id) {
 		// TODO Auto-generated method stub
 		return null;

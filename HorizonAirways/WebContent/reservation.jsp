@@ -15,35 +15,24 @@
 </head>
 
 <body>
+	
 <font face="Arial, Helvetica, sans-serif" size="-1">
 
     <div class="header">
-		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
+		<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
 			<div>
-				<c:choose>
-					<c:when test="${ empty sessionScope.user}">
-						<form action="./login" method="post">
-							<table>
-								<tr>
-									<td><p>User Name</p></td>
-									<td><input type="text" name="userName" /></td>
-									<td><p>Password</p></td>
-									<td><input type="password" name="password" /></td>
-									<td><input type="submit" name="submit" value="Log in" /></td>
-								</tr>
-							</table>
-						</form>
-					</c:when>
+			
 				
-					<c:otherwise>
+					<c:if test="${ not empty sessionScope.user}">
+					
 						<div>
-							<form>
+							<form action="./logout" method="get">
 								<input type="submit" name="logout" value="Log out" align="right"/>
 							</form>
 						</div>
-					</c:otherwise>
+					</c:if>
 				
-				</c:choose>
+				
 			</div>
 		</div>
 
@@ -164,7 +153,14 @@
 			    </div>
     </c:if>
     <br />
-	<input type="submit" value="Reserve flight!" class="reserveButton" />
+    <c:choose>
+    <c:when test="${ empty sessionScope.user}">
+		<p id="footerNote">Please come to the nearest Horizon Airlines Office to reserve a flight. Our counter assistants would be glad to help you.</p> 
+	</c:when>
+	<c:otherwise>
+	<input type="submit" value="Reserve flight(s)" class="reserveButton" />
+	</c:otherwise>
+	</c:choose>
 </form>
 </font>
 <script src="js/reservation.js"></script>

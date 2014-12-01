@@ -7,8 +7,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Horizon Airways</title>
+<link rel="stylesheet" href="css/header.css">
 </head>
+<div class="header">
+		<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
+		<div>
+			<form action="./logout" method="get">
+				<input type="submit" name="logout" value="Log out" />
+			</form>
+		</div>
+	</div>
 <body>
+
 <div>
 Message:
 <%=exception.getMessage()%>
