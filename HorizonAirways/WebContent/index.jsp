@@ -20,7 +20,7 @@
 	<font face="Arial, Helvetica, sans-serif" size="-1">
 		<!-- LOGIN FORM -->
 		<div class="header">
-			<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
+			<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
 			<div>
 				<c:choose>
 					<c:when test="${ empty sessionScope.user}">
@@ -39,7 +39,7 @@
 				
 					<c:otherwise>
 						<div>
-							<form>
+							<form action="./logout" method="get">
 								<input type="submit" name="logout" value="Log out"/>
 							</form>
 						</div>
@@ -53,7 +53,7 @@
         	<c:if test="${sessionScope.user.admin}">
 				<a href="./reservation.jsp"><b>View Reports</b></a>
            		<c:if test="${not empty sessionScope.user}">
-                	<a href="./cancel.jsp"><b>Cancel Flight</b></a>
+                	<a href="./cancel.jsp"><b>Cancel a Flight</b></a>
                 </c:if>
             </c:if>
 		</div>
@@ -95,6 +95,7 @@
 		</table>
 
 	</font>
+	
 </body>
 
 </html>

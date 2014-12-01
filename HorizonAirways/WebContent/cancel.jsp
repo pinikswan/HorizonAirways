@@ -12,11 +12,15 @@
 <title>Horizon Airways</title>
 </head>
 <body>
+	<c:if test="${ empty sessionScope.user}">
+		<c:redirect url="/index.jsp" />
+	</c:if>
+	
 <font face="Arial, Helvetica, sans-serif" size="-1">
 	<div class="header">
-		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
+		<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
 		<div>
-			<form>
+			<form action="./logout" method="get">
 				<input type="submit" name="logout" value="Log out" />
 			</form>
 		</div>
@@ -98,6 +102,14 @@
 		
 		<br />
 		<h3>There are no scheduled flights for this passenger. 
+			<br/><a href="./index.jsp">Back to home page.</a>
+		</h3>
+	
+	<%
+		}
+		else{
+	%>
+	<h3>No passenger with the indicated PNR number is found. 
 			<br/><a href="./index.jsp">Back to home page.</a>
 		</h3>
 	

@@ -15,35 +15,24 @@
 </head>
 
 <body>
+	
 <font face="Arial, Helvetica, sans-serif" size="-1">
 
     <div class="header">
-		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
+		<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
 			<div>
-				<c:choose>
-					<c:when test="${ empty sessionScope.user}">
-						<form action="./login" method="post">
-							<table>
-								<tr>
-									<td><p>User Name</p></td>
-									<td><input type="text" name="userName" /></td>
-									<td><p>Password</p></td>
-									<td><input type="password" name="password" /></td>
-									<td><input type="submit" name="submit" value="Log in" /></td>
-								</tr>
-							</table>
-						</form>
-					</c:when>
+			
 				
-					<c:otherwise>
+					<c:if test="${ not empty sessionScope.user}">
+					
 						<div>
-							<form>
+							<form action="./logout" method="get">
 								<input type="submit" name="logout" value="Log out" align="right"/>
 							</form>
 						</div>
-					</c:otherwise>
+					</c:if>
 				
-				</c:choose>
+				
 			</div>
 		</div>
 
@@ -106,65 +95,72 @@
         </td>
       </tr>
     </table>
-    
-    <div id="roundtrip">
-    <br /> <hr />
-      <table>
-      <tr>
-        <td class="filterArea">
-			<br/><br/><br/><br/>
-            <b>Flight Date:</b>
-            <br/><br/>
-       		<select name="month">
-       			<option>Select Date</option>
-            	<c:forEach items="${months}" var="monthyear">
-             		<option><c:out value="${monthyear}"/></option>
-                </c:forEach>
-            </select>
-    	</td>
-        
-        <td>
-        	<h3>Return</h3>
-        	<table class="flightDetails">
-             <tr>
-               <th rowspan="2" scope="col">Flight No.</th>
-               <th rowspan="2" scope="col">Sector</th>
-               <th rowspan="2" scope="col">Flight Date</th>
-               <th rowspan="2" scope="col">Aircraft Type</th>
-               <th rowspan="2" scope="col">Departure Time</th>
-               <th rowspan="2" scope="col">Arrival Time</th>
-               <th colspan="3" scope="col">Remaining Seats</th>
-               <th rowspan="2" scope="col"></th>
-             </tr>
-             <tr class="flightClasses">
-               <th scope="col">First Class</th>
-               <th scope="col">Business Class</th>
-               <th scope="col">Economy Class</th>
-             </tr>
-             
-          	<c:forEach items="${flightDetailsRoundtrip}" var="flightDetailsRoundtrip">
-             <tr>
-               <td>${flightDetailsRoundtrip.flightNo}</td>
-               <td>${flightDetailsRoundtrip.sectorId}</td>
-               <td>${flightDetailsRoundtrip.flightDate}</td>
-               <td>${flightDetailsRoundtrip.aircraftType}</td>
-               <td>${flightDetailsRoundtrip.departureTime}</td>
-               <td>${flightDetailsRoundtrip.arrivalTime}</td>
-               <td>${flightDetailsRoundtrip.firstClassSeatsAvailable}</td>
-               <td>${flightDetailsRoundtrip.businessClassSeatsAvailable}</td>
-               <td>${flightDetailsRoundtrip.economyClassSeatsAvailable}</td>
-               <td><input type="radio" name="secondFlight" checked value="${flightDetailsRoundtrip.flightDate}"/></td> 
-             </tr>
-          	</c:forEach>
-           </table> 
-        </td>
-      </tr>
-    </table>
-    
-    </div>
-    
+    <c:if test="${not empty sessionScope.flightDetailsRoundtrip}">
+			    <div id="roundtrip">
+			    <br /> <hr />
+			      <table>
+			      <tr>
+			        <td class="filterArea">
+						<br/><br/><br/><br/>
+			            <b>Flight Date:</b>
+			            <br/><br/>
+			       		<select name="month">
+			       			<option>Select Date</option>
+			            	<c:forEach items="${months}" var="monthyear">
+			             		<option><c:out value="${monthyear}"/></option>
+			                </c:forEach>
+			            </select>
+			    	</td>
+			        
+			        <td>
+			        	<h3>Return</h3>
+			        	<table class="flightDetails">
+			             <tr>
+			               <th rowspan="2" scope="col">Flight No.</th>
+			               <th rowspan="2" scope="col">Sector</th>
+			               <th rowspan="2" scope="col">Flight Date</th>
+			               <th rowspan="2" scope="col">Aircraft Type</th>
+			               <th rowspan="2" scope="col">Departure Time</th>
+			               <th rowspan="2" scope="col">Arrival Time</th>
+			               <th colspan="3" scope="col">Remaining Seats</th>
+			               <th rowspan="2" scope="col"></th>
+			             </tr>
+			             <tr class="flightClasses">
+			               <th scope="col">First Class</th>
+			               <th scope="col">Business Class</th>
+			               <th scope="col">Economy Class</th>
+			             </tr>
+			             
+			          	<c:forEach items="${flightDetailsRoundtrip}" var="flightDetailsRoundtrip">
+			             <tr>
+			               <td>${flightDetailsRoundtrip.flightNo}</td>
+			               <td>${flightDetailsRoundtrip.sectorId}</td>
+			               <td>${flightDetailsRoundtrip.flightDate}</td>
+			               <td>${flightDetailsRoundtrip.aircraftType}</td>
+			               <td>${flightDetailsRoundtrip.departureTime}</td>
+			               <td>${flightDetailsRoundtrip.arrivalTime}</td>
+			               <td>${flightDetailsRoundtrip.firstClassSeatsAvailable}</td>
+			               <td>${flightDetailsRoundtrip.businessClassSeatsAvailable}</td>
+			               <td>${flightDetailsRoundtrip.economyClassSeatsAvailable}</td>
+			               <td><input type="radio" name="secondFlight" checked value="${flightDetailsRoundtrip.flightDate}"/></td> 
+			             </tr>
+			          	</c:forEach>
+			           </table> 
+			        </td>
+			      </tr>
+			    </table>
+			    
+			    </div>
+    </c:if>
     <br />
-	<input type="submit" value="Reserve flight!" class="reserveButton" />
+    <c:choose>
+    <c:when test="${ empty sessionScope.user}">
+		<p id="footerNote">Please come to the nearest Horizon Airlines Office to reserve a flight. Our counter assistants would be glad to help you.</p> 
+	</c:when>
+	<c:otherwise>
+	<input type="submit" value="Reserve flight(s)" class="reserveButton" />
+	</c:otherwise>
+	</c:choose>
 </form>
 </font>
 <script src="js/reservation.js"></script>

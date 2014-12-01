@@ -18,6 +18,8 @@ function showRoundtripForm(){
 
 window.onload = function(){
 
+	showRoundtripForm();
+	
 	document.getElementById("roundtripButton").onclick = showRoundtripForm;
 	document.getElementById("onewayButton").onclick = showRoundtripForm;
 	

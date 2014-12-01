@@ -98,3 +98,13 @@ input[type="radio"]:hover {
 .header p {
 	color: #FFFFFF;
 }
+
+#footerNote{
+	
+	text-align:center;
+	font-weight:Bold;
+	font-size:15px;
+	margin:0 auto;
+	
+	
+}

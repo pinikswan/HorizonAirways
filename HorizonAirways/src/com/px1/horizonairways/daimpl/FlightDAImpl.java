@@ -13,7 +13,6 @@ import com.px1.horizonairways.entity.AircraftLayout;
 
 public class FlightDAImpl implements FlightAircraftDA {
 private static final String FIND_LAYOUT_BY_FLIGHTNO = "SELECT Rows,FirstClassArrangement,BusinessClassArrangement,EconomyClassArrangement FROM VwFlightByAircraftModel WHERE FlightNo=?";
-	@Override
 	public AircraftLayout getLayoutByFlightNo(String flightNo) {
 		PreparedStatement stat = null;
 		try {
@@ -30,7 +29,7 @@ private static final String FIND_LAYOUT_BY_FLIGHTNO = "SELECT Rows,FirstClassArr
 				aircraftLayout.setBusinessClassSeatArrangement(rs.getString(3));
 				aircraftLayout.setEconomyClassSeatArrangement(rs.getString(4));
 			}
-//			System.out.println(aircraftLayout.toString());
+
 			return aircraftLayout;
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
