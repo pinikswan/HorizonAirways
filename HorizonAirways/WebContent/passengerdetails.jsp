@@ -10,6 +10,7 @@
 <title>Passenger Details</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="css/horizonairways.css"> 
+
 <script>
 $(document).ready(function(){
 	$("#modalContainer").hide();
@@ -31,9 +32,11 @@ $(document).ready(function(){
 	
 	$("form .seatPicker").click(function(){
 		$("#modalContainer").show();
+		$("#modalContainer").css("visibility", "visible");
 		$("#seatPlanModal > div:not(:last-child)").hide();
 		if($(this).hasClass("first")){
 			$("#firstSeatPlan").show();
+			
 		}else{
 			$("#secondSeatPlan").show();
 		}
@@ -47,22 +50,51 @@ $(document).ready(function(){
 
 });
 </script>
-<style type="text/css">
-	#seatPlanModal .buttonDiv{
-		display: flex;
-		justify-contents: end;
-	}
+<style>
+
+#modalContainer{
+	background: rgba(0,0,0,0.7);
+	z-index: 1;
+	position: absolute;
+	top: 0px;
+	left:0px;
+	min-width:100%;
+	min-height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+	visibility: hidden;
+}
+
+#seatPlanModal{
+	background: blue;
+	height:50%;
+	width:50%;
+	max-height: 50%;
+	max-width: 50%;
+	overflow: auto;
+	font-size: 10px;
+	padding: 10px 0px;
+	background: #ffffff;
+	
+}
+
+#modalContainer .buttonDiv{
+	display: flex;
+	max-width:90%;
+	justify-content: flex-end;
+	font-size:12px;
+}
 </style>
+
+
 
 </head>
 <body>
-	<c:if test="${ empty sessionScope.user}">
-		<c:redirect url="/index.jsp" />
-	</c:if>
 	<div class="header">
-		<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
+		<div><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></div>
 		<div>
-			<form action="./logout" method="get">
+			<form>
 				<input type="submit" name="logout" value="Log out" />
 			</form>
 		</div>
@@ -73,26 +105,26 @@ $(document).ready(function(){
 		<h3>Personal Details Form</h3>
 		<div>
 			<label for="firstName">First Name: </label>
-			<input type="text"  name="firstName" id="firstName" required>
+			<input type="text"  name="firstName" id="firstName">
 		</div>
 		<div>
 			<label for="lastName">Last Name: </label>
-			<input type="text" name="lastName" id="lastName" required>
+			<input type="text" name="lastName" id="lastName" >
 		</div>
 		<div>
 			<label for="address">Address: </label>
-			<textarea  name="address" id="address" required></textarea>
+			<textarea  name="address" id="address"></textarea>
 		</div>
 		<div>
 			<label for="gender">Gender: </label>
-			<select name="gender" required>
+			<select name="gender">
 				<option value="M">Male</option>
 				<option value="F">Female</option>
 			</select>
 		</div>
 		<div>
 			<label for="birthDay">Birth Day: </label>
-			<input type="date" name="birthDay" id="birthDay" required>
+			<input type="date" name="birthDay" id="birthDay">
 		</div>
 		<div>
 			<label for="mobileNo">Mobile Number: </label>
@@ -104,14 +136,14 @@ $(document).ready(function(){
 		</div>
 		<div>
 			<label for="mealPreference">Meal Preference: </label>
-			<select name="mealPreference" id="mealPreference" required>
+			<select name="mealPreference" id="mealPreference">
 				<option value="Non-Vegetarian">Non-Vegetarian</option>
 				<option value="Vegetarian">Vegetarian</option>
 			</select>
 		</div>
 		<div>
 			<label for="SSR">SSR: </label>
-			<input type="text" name="SSR" id="SSR" required placeholder="Put NA if not applicable.">
+			<input type="text" name="SSR" id="SSR" >
 		</div>
 		
 		<div><h3>Flight: ${firstFlight.flightNo} - ${firstFlight.sectorId}</h3></div>
