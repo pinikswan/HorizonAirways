@@ -49,8 +49,10 @@ public class LoginDAImpl implements LoginDA {
 				}
 			}
 		}
-
+		if((user.getUserName().equals(login.getUserName()))&&(user.getPassword().equals(login.getPassword())))
 		return user;
+		else
+			return null;
 
 	}
 }
