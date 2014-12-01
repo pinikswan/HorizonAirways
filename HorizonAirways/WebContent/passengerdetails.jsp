@@ -11,7 +11,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <link rel="stylesheet" href="css/horizonairways.css"> 
 
-	<script>
+
+<script>
+
+
+
+
 	$(document).ready(function(){
 		$("#modalContainer").hide();
 		$( ".available.seat").click(function(){
@@ -29,37 +34,33 @@
 	
 		});
 		
+
+	
 		$("form .seatPicker").click(function(){
 			$("#modalContainer").show();
+			$("#modalContainer").css("visibility", "visible");
 			$("#seatPlanModal > div:not(:last-child)").hide();
 			if($(this).hasClass("first")){
 				$("#firstSeatPlan").show();
+				
 			}else{
 				$("#secondSeatPlan").show();
 			}
-			
 		});
-	
-	$("form .seatPicker").click(function(){
-		$("#modalContainer").show();
-		$("#modalContainer").css("visibility", "visible");
-		$("#seatPlanModal > div:not(:last-child)").hide();
-		if($(this).hasClass("first")){
-			$("#firstSeatPlan").show();
-			
-		}else{
-			$("#secondSeatPlan").show();
-		}
-		
 		$("#seatPlanModal .okButton").click(function(){
 			$("#modalContainer").hide();
 		});
 	
 	});
+
 	</script>
+
+
+
 </head>
 
 <body>
+
 	<font face="Arial, Helvetica, sans-serif" size="-1">
 <style>
 
