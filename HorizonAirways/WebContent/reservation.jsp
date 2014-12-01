@@ -106,63 +106,63 @@
         </td>
       </tr>
     </table>
-    
-    <div id="roundtrip">
-    <br /> <hr />
-      <table>
-      <tr>
-        <td class="filterArea">
-			<br/><br/><br/><br/>
-            <b>Flight Date:</b>
-            <br/><br/>
-       		<select name="month">
-       			<option>Select Date</option>
-            	<c:forEach items="${months}" var="monthyear">
-             		<option><c:out value="${monthyear}"/></option>
-                </c:forEach>
-            </select>
-    	</td>
-        
-        <td>
-        	<h3>Return</h3>
-        	<table class="flightDetails">
-             <tr>
-               <th rowspan="2" scope="col">Flight No.</th>
-               <th rowspan="2" scope="col">Sector</th>
-               <th rowspan="2" scope="col">Flight Date</th>
-               <th rowspan="2" scope="col">Aircraft Type</th>
-               <th rowspan="2" scope="col">Departure Time</th>
-               <th rowspan="2" scope="col">Arrival Time</th>
-               <th colspan="3" scope="col">Remaining Seats</th>
-               <th rowspan="2" scope="col"></th>
-             </tr>
-             <tr class="flightClasses">
-               <th scope="col">First Class</th>
-               <th scope="col">Business Class</th>
-               <th scope="col">Economy Class</th>
-             </tr>
-             
-          	<c:forEach items="${flightDetailsRoundtrip}" var="flightDetailsRoundtrip">
-             <tr>
-               <td>${flightDetailsRoundtrip.flightNo}</td>
-               <td>${flightDetailsRoundtrip.sectorId}</td>
-               <td>${flightDetailsRoundtrip.flightDate}</td>
-               <td>${flightDetailsRoundtrip.aircraftType}</td>
-               <td>${flightDetailsRoundtrip.departureTime}</td>
-               <td>${flightDetailsRoundtrip.arrivalTime}</td>
-               <td>${flightDetailsRoundtrip.firstClassSeatsAvailable}</td>
-               <td>${flightDetailsRoundtrip.businessClassSeatsAvailable}</td>
-               <td>${flightDetailsRoundtrip.economyClassSeatsAvailable}</td>
-               <td><input type="radio" name="secondFlight" checked value="${flightDetailsRoundtrip.flightDate}"/></td> 
-             </tr>
-          	</c:forEach>
-           </table> 
-        </td>
-      </tr>
-    </table>
-    
-    </div>
-    
+    <c:if test="${not empty sessionScope.flightDetailsRoundtrip}">
+			    <div id="roundtrip">
+			    <br /> <hr />
+			      <table>
+			      <tr>
+			        <td class="filterArea">
+						<br/><br/><br/><br/>
+			            <b>Flight Date:</b>
+			            <br/><br/>
+			       		<select name="month">
+			       			<option>Select Date</option>
+			            	<c:forEach items="${months}" var="monthyear">
+			             		<option><c:out value="${monthyear}"/></option>
+			                </c:forEach>
+			            </select>
+			    	</td>
+			        
+			        <td>
+			        	<h3>Return</h3>
+			        	<table class="flightDetails">
+			             <tr>
+			               <th rowspan="2" scope="col">Flight No.</th>
+			               <th rowspan="2" scope="col">Sector</th>
+			               <th rowspan="2" scope="col">Flight Date</th>
+			               <th rowspan="2" scope="col">Aircraft Type</th>
+			               <th rowspan="2" scope="col">Departure Time</th>
+			               <th rowspan="2" scope="col">Arrival Time</th>
+			               <th colspan="3" scope="col">Remaining Seats</th>
+			               <th rowspan="2" scope="col"></th>
+			             </tr>
+			             <tr class="flightClasses">
+			               <th scope="col">First Class</th>
+			               <th scope="col">Business Class</th>
+			               <th scope="col">Economy Class</th>
+			             </tr>
+			             
+			          	<c:forEach items="${flightDetailsRoundtrip}" var="flightDetailsRoundtrip">
+			             <tr>
+			               <td>${flightDetailsRoundtrip.flightNo}</td>
+			               <td>${flightDetailsRoundtrip.sectorId}</td>
+			               <td>${flightDetailsRoundtrip.flightDate}</td>
+			               <td>${flightDetailsRoundtrip.aircraftType}</td>
+			               <td>${flightDetailsRoundtrip.departureTime}</td>
+			               <td>${flightDetailsRoundtrip.arrivalTime}</td>
+			               <td>${flightDetailsRoundtrip.firstClassSeatsAvailable}</td>
+			               <td>${flightDetailsRoundtrip.businessClassSeatsAvailable}</td>
+			               <td>${flightDetailsRoundtrip.economyClassSeatsAvailable}</td>
+			               <td><input type="radio" name="secondFlight" checked value="${flightDetailsRoundtrip.flightDate}"/></td> 
+			             </tr>
+			          	</c:forEach>
+			           </table> 
+			        </td>
+			      </tr>
+			    </table>
+			    
+			    </div>
+    </c:if>
     <br />
 	<input type="submit" value="Reserve flight!" class="reserveButton" />
 </form>

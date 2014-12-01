@@ -9,9 +9,10 @@
 <link rel="stylesheet" href="css/header.css">
 <title>Passenger Details</title>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" href="css/horizonairways.css"> 
 <script>
 $(document).ready(function(){
-	
+	$("#modalContainer").hide();
 	$( ".available.seat").click(function(){
 		if($(this).parents(".${requestScope.flightId1}").length){
 			$("#firstSeatNo").val($(this).children("div.seatNo").text());
@@ -25,6 +26,23 @@ $(document).ready(function(){
 			$(this).addClass("selected");
 		}
 
+	});
+	
+	
+	$("form .seatPicker").click(function(){
+		$("#modalContainer").show();
+		$("#seatPlanModal > div:not(:last-child)").hide();
+		if($(this).hasClass("first")){
+			$("#firstSeatPlan").show();
+		}else{
+			$("#secondSeatPlan").show();
+		}
+		
+	});
+	
+	
+	$("#seatPlanModal .okButton").click(function(){
+		$("#modalContainer").hide();
 	});
 
 });
@@ -86,10 +104,11 @@ $(document).ready(function(){
 			<label for="SSR">SSR: </label>
 			<input type="text" name="SSR" id="SSR" >
 		</div>
+		
 		<div><h3>Flight: ${firstFlight.flightNo} - ${firstFlight.sectorId}</h3></div>
 		<div>
 			<label for="firstSeatNo">Seat No: </label>
-			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1}" required readonly>
+			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1} seatPicker first" required readonly>
 		</div>
 		<div>
 			<label for="firstSeatClass">Seat Class: </label>
@@ -103,7 +122,7 @@ $(document).ready(function(){
 		<div><h3>Flight: ${secondFlight.flightNo} - ${secondFlight.sectorId}</h3></div>
 		<div>
 			<label for="secondSeatNo">Seat No: </label>
-			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2}" required readonly>
+			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2} seatPicker second" required readonly>
 		</div>
 		<div>
 			<label for="secondSeatClass">Seat Class: </label>
@@ -117,39 +136,45 @@ $(document).ready(function(){
 		<input type="submit" value="Submit" class="submit"/>
 	</div>
 	</form>
-	
-	<c:set var="firstSeatPlan" value="${requestScope.firstPassengerSeatPlan}" />
-		<div>
-			<div class="area">
-				${firstSeatPlan.firstClassHTML}
+	<div id="modalContainer">
+		<div id="seatPlanModal">
+			<div id="firstSeatPlan">
+				<c:set var="firstSeatPlan" value="${requestScope.firstPassengerSeatPlan}"/>
+					<div>
+						<div class="area">
+							${firstSeatPlan.firstClassHTML}
+						</div>
+						<div class="area">
+							${firstSeatPlan.businessClassHTML}
+						</div>
+						<div class="area">
+							${firstSeatPlan.economyClassHTML}
+						</div>
+					</div>
 			</div>
-			<div class="area">
-				${firstSeatPlan.businessClassHTML}
+			<div id="secondSeatPlan">	
+				<c:if test="${not empty requestScope.secondPassengerSeatPlan}">
+					<c:set var="secondSeatPlan" value="${requestScope.secondPassengerSeatPlan}" />
+					<div>
+						<div class="area">
+						${secondSeatPlan.firstClassHTML}
+						</div>
+						<div class="area">
+						${secondSeatPlan.businessClassHTML}
+						</div>
+						<div class="area">
+						${secondSeatPlan.economyClassHTML}
+						</div>
+				
+					</div>
+				</c:if>
 			</div>
-			<div class="area">
-				${firstSeatPlan.economyClassHTML}
+			<div>
+				<input type="button" value="Ok" class="okButton horizonButton" />
 			</div>
-		</div>
-		
-	<br/><br/>
-	<hr/>
-	<br/><br/>
-	
-	<c:if test="${not empty requestScope.secondPassengerSeatPlan}">
-		<c:set var="secondSeatPlan" value="${requestScope.secondPassengerSeatPlan}" />
-		<div>
-			<div class="area">
-			${secondSeatPlan.firstClassHTML}
-			</div>
-			<div class="area">
-			${secondSeatPlan.businessClassHTML}
-			</div>
-			<div class="area">
-			${secondSeatPlan.economyClassHTML}
-			</div>
-	
-		</div>
-	</c:if>
-	
+		</div>	
+	</div>
 </body>
+
+
 </html>
