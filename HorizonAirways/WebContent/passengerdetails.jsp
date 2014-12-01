@@ -47,6 +47,12 @@ $(document).ready(function(){
 
 });
 </script>
+<style type="text/css">
+	#seatPlanModal .buttonDiv{
+		display: flex;
+		justify-contents: end;
+	}
+</style>
 
 </head>
 <body>
@@ -172,7 +178,7 @@ $(document).ready(function(){
 					</div>
 				</c:if>
 			</div>
-			<div>
+			<div class="buttonDiv">
 				<input type="button" value="Ok" class="okButton horizonButton" />
 			</div>
 		</div>	
