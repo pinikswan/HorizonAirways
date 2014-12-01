@@ -97,6 +97,12 @@
 	justify-content: flex-end;
 	font-size:12px;
 }
+
+.passengerDetails {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
 </style>
 
 
@@ -110,83 +116,86 @@
 		</div>
 	</div>
 
-	<form action="./PassengerDetails" method="post">
-	<div>
-		<h3>Personal Details Form</h3>
+	<div class="passengerDetails">
+		<form action="./PassengerDetails" method="post">
 		<div>
-			<label for="firstName">First Name: </label>
-			<input type="text"  name="firstName" id="firstName">
+			<h3>Personal Details Form</h3>
+			<div>
+				<label for="firstName">First Name: </label>
+				<input type="text"  name="firstName" id="firstName">
+			</div>
+			<div>
+				<label for="lastName">Last Name: </label>
+				<input type="text" name="lastName" id="lastName" >
+			</div>
+			<div>
+				<label for="address">Address: </label>
+				<textarea  name="address" id="address"></textarea>
+			</div>
+			<div>
+				<label for="gender">Gender: </label>
+				<select name="gender">
+					<option value="M">Male</option>
+					<option value="F">Female</option>
+				</select>
+			</div>
+			<div>
+				<label for="birthDay">Birth Day: </label>
+				<input type="date" name="birthDay" id="birthDay">
+			</div>
+			<div>
+				<label for="mobileNo">Mobile Number: </label>
+				<input type="text" name="mobileNo" id="mobileNo" >
+			</div>
+			<div>
+				<label for="emailAddress">Email Address: </label>
+				<input type="email" name="emailAddress" id="emailAddress">
+			</div>
+			<div>
+				<label for="mealPreference">Meal Preference: </label>
+				<select name="mealPreference" id="mealPreference">
+					<option value="Non-Vegetarian">Non-Vegetarian</option>
+					<option value="Vegetarian">Vegetarian</option>
+				</select>
+			</div>
+			<div>
+				<label for="SSR">SSR: </label>
+				<input type="text" name="SSR" id="SSR" >
+			</div>
+			
+			<div><h3>Flight: ${firstFlight.flightNo} - ${firstFlight.sectorId}</h3></div>
+			<div>
+				<label for="firstSeatNo">Seat No: </label>
+				<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1} seatPicker first" required readonly>
+			</div>
+			<div>
+				<label for="firstSeatClass">Seat Class: </label>
+				<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required readonly>
+			</div>
+			
+			<% 
+				if(session.getAttribute("secondFlight")!=null){
+			%>
+			
+			<div><h3>Flight: ${secondFlight.flightNo} - ${secondFlight.sectorId}</h3></div>
+			<div>
+				<label for="secondSeatNo">Seat No: </label>
+				<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2} seatPicker second" required readonly>
+			</div>
+			<div>
+				<label for="secondSeatClass">Seat Class: </label>
+				<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required readonly>
+			</div>
+			<% 
+				}
+			%>
+			
+			<div><h2>Price:</h2></div>
+			<input type="submit" value="Submit" class="submit"/>
 		</div>
-		<div>
-			<label for="lastName">Last Name: </label>
-			<input type="text" name="lastName" id="lastName" >
-		</div>
-		<div>
-			<label for="address">Address: </label>
-			<textarea  name="address" id="address"></textarea>
-		</div>
-		<div>
-			<label for="gender">Gender: </label>
-			<select name="gender">
-				<option value="M">Male</option>
-				<option value="F">Female</option>
-			</select>
-		</div>
-		<div>
-			<label for="birthDay">Birth Day: </label>
-			<input type="date" name="birthDay" id="birthDay">
-		</div>
-		<div>
-			<label for="mobileNo">Mobile Number: </label>
-			<input type="text" name="mobileNo" id="mobileNo" >
-		</div>
-		<div>
-			<label for="emailAddress">Email Address: </label>
-			<input type="email" name="emailAddress" id="emailAddress">
-		</div>
-		<div>
-			<label for="mealPreference">Meal Preference: </label>
-			<select name="mealPreference" id="mealPreference">
-				<option value="Non-Vegetarian">Non-Vegetarian</option>
-				<option value="Vegetarian">Vegetarian</option>
-			</select>
-		</div>
-		<div>
-			<label for="SSR">SSR: </label>
-			<input type="text" name="SSR" id="SSR" >
-		</div>
+		</form>
+	</div>	
 		
-		<div><h3>Flight: ${firstFlight.flightNo} - ${firstFlight.sectorId}</h3></div>
-		<div>
-			<label for="firstSeatNo">Seat No: </label>
-			<input type="text" name="firstSeatNo" id="firstSeatNo" class="${requestScope.flightId1} seatPicker first" required readonly>
-		</div>
-		<div>
-			<label for="firstSeatClass">Seat Class: </label>
-			<input type="text" name="firstSeatClass" id="firstSeatClass" class="${requestScope.flightId1}" required readonly>
-		</div>
-		
-		<% 
-			if(session.getAttribute("secondFlight")!=null){
-		%>
-		
-		<div><h3>Flight: ${secondFlight.flightNo} - ${secondFlight.sectorId}</h3></div>
-		<div>
-			<label for="secondSeatNo">Seat No: </label>
-			<input type="text" name="secondSeatNo" id="secondSeatNo" class="${requestScope.flightId2} seatPicker second" required readonly>
-		</div>
-		<div>
-			<label for="secondSeatClass">Seat Class: </label>
-			<input type="text" name="secondSeatClass" id="secondSeatClass" class="${requestScope.flightId2}" required readonly>
-		</div>
-		<% 
-			}
-		%>
-		
-		<div><h2>Price:</h2></div>
-		<input type="submit" value="Submit" class="submit"/>
-	</div>
-	</form>
 	<div id="modalContainer">
 		<div id="seatPlanModal">
 			<div id="firstSeatPlan">
