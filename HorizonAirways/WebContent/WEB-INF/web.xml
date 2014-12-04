@@ -97,4 +97,24 @@
     <servlet-name>LogoutServlet</servlet-name>
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ViewReportsServlet</display-name>
+    <servlet-name>ViewReportsServlet</servlet-name>
+    <servlet-class>com.px1.horizonairways.servlet.ViewReportsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ViewReportsServlet</servlet-name>
+    <url-pattern>/viewReports</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>PassengerManifest</display-name>
+    <servlet-name>PassengerManifest</servlet-name>
+    <servlet-class>com.px1.horizonairways.servlet.PassengerManifest</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PassengerManifest</servlet-name>
+    <url-pattern>/PassengerManifest</url-pattern>
+  </servlet-mapping>
 </web-app>

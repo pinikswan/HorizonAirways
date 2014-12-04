@@ -14,6 +14,33 @@
         <dependent-module archiveName="DatabaseConnectorModule.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/DatabaseConnectorModule/DatabaseConnectorModule">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="commons-logging-1.1.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/commons-logging-1.1.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="struts2-core-2.3.16.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/struts2-core-2.3.16.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-fileupload-1.3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/commons-fileupload-1.3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="xwork-core-2.3.16.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/xwork-core-2.3.16.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-io-2.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/commons-io-2.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ognl-3.0.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/ognl-3.0.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="freemarker-2.3.19.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/freemarker-2.3.19.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-lang3-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/commons-lang3-3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="javassist-3.11.0.GA.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/C:/Java EE/struts-2.3.16.3/lib/javassist-3.11.0.GA.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="HorizonAirways"/>
         <property name="java-output-path" value="/HorizonAirways/build/classes"/>
     </wb-module>

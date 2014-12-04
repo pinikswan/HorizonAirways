@@ -34,6 +34,10 @@
 		
 		<div>
 			<h3>Personal Details Form</h3>
+				<div>
+				<label for="pnrNo">PNR Number: </label>
+				<input type="text"  name="pnrNo" id="pnrNo" disabled value="${requestScope.passenger.pnr}">
+			</div>
 			<div>
 				<label for="firstName">First Name: </label>
 				<input type="text"  name="firstName" id="firstName" disabled value="${requestScope.passenger.firstName}">

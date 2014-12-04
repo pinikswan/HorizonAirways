@@ -81,8 +81,14 @@ public class FlightReservationService {
 		PassengerSeatPlan seatPlan =  new PassengerSeatPlan(flightId,da);
 		return seatPlan;
 	}
-	
+	 
+	public List<FlightDetails> getAllFlightDetails(){
+		return da.getAllFlightDetails();
+	}
 
+	public List<Passenger> getAllPassengersByFlight(FlightId id){
+		return da.getAllPassengersByFlightId(id);
+	}
 
 
 

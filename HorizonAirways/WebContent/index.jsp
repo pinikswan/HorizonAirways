@@ -51,9 +51,9 @@
 		
 		<div class="nav">
         	<c:if test="${sessionScope.user.admin}">
-				<a href="./reservation.jsp"><b>View Reports</b></a>
+				<a href="./viewReports"><b>View Reports</b></a>
            		<c:if test="${not empty sessionScope.user}">
-                	<a href="./cancel.jsp"><b>Cancel a Flight</b></a>
+                	<a href="./cancel.jsp"><b>Search by PNR</b></a>
                 </c:if>
             </c:if>
 		</div>
