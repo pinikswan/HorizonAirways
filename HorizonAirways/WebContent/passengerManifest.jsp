@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/tableDesign.css">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Horizon Airways</title>
 </head>
 <body>
 

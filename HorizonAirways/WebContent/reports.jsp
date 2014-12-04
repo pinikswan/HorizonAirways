@@ -9,7 +9,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Horizon Airways</title>
 <link rel="stylesheet" href="css/index.css">
 <link rel="stylesheet" href="css/header.css">
 <link rel="stylesheet" href="css/tableDesign.css">
@@ -18,7 +18,7 @@
 
 
 <div class="header">
-			<div><a href="./index"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
+			<div><a href="./index.jsp"><img src="./images/horizonAirwaysLogo.png" alt="logo" width="200px" height="100px"/></a></div>
 			<div>
 				<c:choose>
 					<c:when test="${ empty sessionScope.user}">
